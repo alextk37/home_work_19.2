@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "home-work"
+version = "0.1.0"
+description = "Домашняя работа 19.2 Django"
+authors = ["alextk37 <alextk37@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
