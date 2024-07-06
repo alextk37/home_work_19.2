@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def catalog(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -9,6 +10,7 @@ def catalog(request):
 
     return render(request, "catalog.html")
 
+
 def contacts(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -17,4 +19,3 @@ def contacts(request):
         print(f'({name} : {email}) - {message}')
 
     return render(request, "contacts.html")
-
