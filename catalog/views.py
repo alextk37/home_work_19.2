@@ -6,7 +6,7 @@ def catalog(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print(f'({name} : {email}) - {message}')
+        print(f'({name} : {email}) -> {message}')
 
     return render(request, "catalog.html")
 
@@ -16,6 +16,6 @@ def contacts(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print(f'({name} : {email}) - {message}')
+        print(f'({name} : {email}) -> {message}')
 
     return render(request, "contacts.html")
