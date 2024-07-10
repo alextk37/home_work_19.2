@@ -1,0 +1,23 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Кувшины",
+      "description": "Кувшины для жидких пищевых продуктов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Кружки",
+      "description": "Кружки для жидких пищевых продуктов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": { "category_name": "Посуда", "description": "Глиняная посуда" }
+  }
+]
