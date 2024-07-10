@@ -5,7 +5,7 @@ NULLABLE = {"null": True, "blank": True}
 class Products(models.Model):
     product_name = models.CharField(max_length=225, verbose_name="продукт")
     description = models.TextField(verbose_name="описание")
-    preview_img = models.ImageField(uplpad_to="product_images", verbose_name='Изображение', **NULLABLE)
+    preview_img = models.ImageField(upload_to="product_images", verbose_name='Изображение', **NULLABLE)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     price = models.IntegerField(verbose_name='Цена')
     created_at = models.DateField(verbose_name='Дата создания', auto_now=True)
