@@ -3,21 +3,215 @@
     "model": "catalog.category",
     "pk": 1,
     "fields": {
-      "category_name": "Кувшины",
-      "description": "Кувшины для жидких пищевых продуктов"
+      "category_name": "Кухонная посуда",
+      "description": "Все для приготовления пищи на кухне"
     }
   },
   {
     "model": "catalog.category",
     "pk": 2,
     "fields": {
-      "category_name": "Кружки",
-      "description": "Кружки для жидких пищевых продуктов"
+      "category_name": "Столовая посуда",
+      "description": "Посуда для сервировки стола"
     }
   },
   {
     "model": "catalog.category",
     "pk": 3,
-    "fields": { "category_name": "Посуда", "description": "Глиняная посуда" }
-  }
-]
+    "fields": {
+      "category_name": "Кофейные принадлежности",
+      "description": "Все для приготовления и подачи кофе"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "category_name": "Сковороды и кастрюли",
+      "description": "Разнообразие сковородок и кастрюль для приготовления пищи"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "category_name": "Кухонные аксессуары",
+      "description": "Различные аксессуары для кухни и приготовления пищи"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+      "category_name": "Посуда для сервировки стола",
+      "description": "Элегантная посуда для сервировки стола и украшения обеденного стола"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+      "category_name": "Кухонные ножи и аксессуары",
+      "description": "Острые ножи и аксессуары для различных кухонных задач"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 8,
+    "fields": {
+      "category_name": "Посуда из нержавеющей стали",
+      "description": "Изысканная и прочная посуда из нержавеющей стали"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 9,
+    "fields": {
+      "category_name": "Керамическая посуда",
+      "description": "Красивая и функциональная керамическая посуда"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 10,
+    "fields": {
+      "category_name": "Стеклянная посуда",
+      "description": "Прозрачная и элегантная стеклянная посуда"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 11,
+    "fields": {
+      "category_name": "Посуда для выпечки",
+      "description": "Посуда и формы для приготовления и выпечки различных десертов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 12,
+    "fields": {
+      "category_name": "Посуда для микроволновой печи",
+      "description": "Специальная посуда, безопасная для использования в микроволновой печи"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 13,
+    "fields": {
+      "category_name": "Посуда для барбекю и гриля",
+      "description": "Посуда и аксессуары для приготовления барбекю и гриля"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 14,
+    "fields": {
+      "category_name": "Посуда для пикника",
+      "description": "Удобная и компактная посуда для пикника и отдыха на природе"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 15,
+    "fields": {
+      "category_name": "Посуда для детей",
+      "description": "Безопасная и привлекательная посуда для детей"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 16,
+    "fields": {
+      "category_name": "Посуда для хранения",
+      "description": "Емкости и контейнеры для хранения пищи и продуктов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 17,
+    "fields": {
+      "category_name": "Посуда для приготовления напитков",
+      "description": "Специальная посуда для приготовления различных напитков"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 18,
+    "fields": {
+      "category_name": "Посуда для салатов",
+      "description": "Посуда и инструменты для приготовления и сервировки салатов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 19,
+    "fields": {
+      "category_name": "Посуда для выпускных вечеров",
+      "description": "Элегантная посуда для особых мероприятий и выпускных вечеров"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 20,
+    "fields": {
+      "category_name": "Посуда для домашнего бара",
+      "description": "Посуда и аксессуары для создания домашнего бара и приготовления коктейлей"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 21,
+    "fields": {
+      "category_name": "Посуда для хлеба",
+      "description": "Посуда и аксессуары для приготовления и хранения хлеба"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 22,
+    "fields": {
+      "category_name": "Посуда для сыра",
+      "description": "Посуда и инструменты для приготовления и сервировки сыра"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 23,
+    "fields": {
+      "category_name": "Посуда для мороженого",
+      "description": "Посуда и аксессуары для приготовления и сервировки мороженого"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 24,
+    "fields": {
+      "category_name": "Посуда для супов",
+      "description": "Посуда и инструменты для приготовления и сервировки супов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 25,
+    "fields": {
+      "category_name": "Посуда для пасты",
+      "description": "Посуда и аксессуары для приготовления и сервировки пасты"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 26,
+    "fields": {
+      "category_name": "Посуда для овощей и фруктов",
+      "description": "Посуда и инструменты для приготовления и сервировки овощей и фруктов"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 27,
+    "fields": {
+      "category_name": "Посуда для мяса и птицы",
+      "description": "Посуда и инструменты для приготовления и сервировки мяса и птицы"
+    }
+] 
