@@ -1,0 +1,244 @@
+[
+  {
+    "model": "catalog.products",
+    "pk": 1,
+    "fields": {
+      "product_name": "Керамическая кастрюля",
+      "description": "Идеальная кастрюля для приготовления супов и соусов",
+      "preview_img": null,
+      "category": 1,
+      "price": 29.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 2,
+    "fields": {
+      "product_name": "Стеклянная тарелка",
+      "description": "Элегантная тарелка для сервировки стола",
+      "preview_img": null,
+      "category": 2,
+      "price": 9.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 3,
+    "fields": {
+      "product_name": "Кофейный гейзер",
+      "description": "Устройство для приготовления кофе в стиле итальянского эспрессо",
+      "preview_img": null,
+      "category": 3,
+      "price": 49.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 4,
+    "fields": {
+      "product_name": "Фарфоровая чашка",
+      "description": "Элегантная чашка для кофе или чая",
+      "preview_img": null,
+      "category": 2,
+      "price": 7.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 5,
+    "fields": {
+      "product_name": "Керамическая сковорода",
+      "description": "Сковорода с антипригарным покрытием для жарки",
+      "preview_img": null,
+      "category": 1,
+      "price": 39.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 6,
+    "fields": {
+      "product_name": "Кухонные ножи",
+      "description": "Набор острых ножей для различных видов резки",
+      "preview_img": null,
+      "category": 1,
+      "price": 59.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 7,
+    "fields": {
+      "product_name": "Столовый набор",
+      "description": "Комплект столовых приборов для сервировки",
+      "preview_img": null,
+      "category": 2,
+      "price": 19.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 8,
+    "fields": {
+      "product_name": "Кофейная машина",
+      "description": "Автоматическая кофемашина для приготовления различных видов кофе",
+      "preview_img": null,
+      "category": 3,
+      "price": 199.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 9,
+    "fields": {
+      "product_name": "Набор для выпечки",
+      "description": "Комплект инструментов для приготовления домашней выпечки",
+      "preview_img": null,
+      "category": 1,
+      "price": 24.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 10,
+    "fields": {
+      "product_name": "Сервиз для чая",
+      "description": "Красивый сервиз для чая в классическом стиле",
+      "preview_img": null,
+      "category": 2,
+      "price": 49.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 11,
+    "fields": {
+      "product_name": "Кофейный стакан",
+      "description": "Стакан для кофе с изящным дизайном",
+      "preview_img": null,
+      "category": 2,
+      "price": 5.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 12,
+    "fields": {
+      "product_name": "Молокоотделитель",
+      "description": "Устройство для отделения молока от сливок",
+      "preview_img": null,
+      "category": 3,
+      "price": 14.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 13,
+    "fields": {
+      "product_name": "Набор кухонных принадлежностей",
+      "description": "Набор полезных инструментов для кухни",
+      "preview_img": null,
+      "category": 1,
+      "price": 34.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 14,
+    "fields": {
+      "product_name": "Столовая ложка",
+      "description": "Удобная ложка для использования в столовой",
+      "preview_img": null,
+      "category": 2,
+      "price": 3.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 15,
+    "fields": {
+      "product_name": "Кофейный френч-пресс",
+      "description": "Устройство для приготовления кофе методом френч-пресс",
+      "preview_img": null,
+      "category": 3,
+      "price": 27.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 16,
+    "fields": {
+      "product_name": "Набор для пиццы",
+      "description": "Комплект инструментов для приготовления и сервировки пиццы",
+      "preview_img": null,
+      "category": 1,
+      "price": 19.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 17,
+    "fields": {
+      "product_name": "Салатница",
+      "description": "Большая салатница для приготовления и сервировки салатов",
+      "preview_img": null,
+      "category": 2,
+      "price": 12.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 18,
+    "fields": {
+      "product_name": "Кофейный капсульный аппарат",
+      "description": "Компактная система для приготовления кофе по капсулам",
+      "preview_img": null,
+      "category": 3,
+      "price": 79.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 19,
+    "fields": {
+      "product_name": "Форма для выпечки кексов",
+      "description": "Форма для приготовления вкусных кексов",
+      "preview_img": null,
+      "category": 1,
+      "price": 8.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 20,
+    "fields": {
+      "product_name": "Кружка для чая",
+      "description": "Керамическая кружка для чая с уютным дизайном",
+      "preview_img": null,
+      "category": 2,
+      "price": 6.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 21,
+    "fields": {
+      "product_name": "Кофейная ложка",
+      "description": "Маленькая ложка для кофе",
+      "preview_img": null,
+      "category": 2,
+      "price": 2.99
+    }
+  },
+  {
+    "model": "catalog.products",
+    "pk": 22,
+    "fields": {
+      "product_name": "Капучинатор",
+      "description": "Устройство для приготовления пышной молочной пенки",
+      "preview_img": null,
+      "category": 3,
+      "price": 16.99
+    }
+  }
+]
