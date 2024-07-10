@@ -10,6 +10,7 @@ class Products(models.Model):
     price = models.IntegerField(verbose_name='Цена')
     created_at = models.DateField(verbose_name='Дата создания', auto_now=True)
     updated_at = models.DateField(verbose_name='Дата создания', auto_now=True)
+    manufactured_at = models.DateField(verbose_name='Дата производства')
 
     def __str__(self):
         return f"{self.product_name}"
