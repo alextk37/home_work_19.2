@@ -19,3 +19,6 @@ def contacts(request):
         print(f'({name} : {email}) -> {message}')
 
     return render(request, "contacts.html")
+
+def about_company(request):
+    return render(request, "about_company.html")
