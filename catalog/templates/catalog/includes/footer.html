@@ -1,0 +1,32 @@
+ <footer class="bg-light mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="map">
+                        <script type="text/javascript" charset="utf-8" async
+                            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af7902ddd498fb9e9a29e002c74f4a29bdb5ff2f6c51239be226a30d64dcd7b16&amp;width=523&amp;height=414&amp;lang=ru_RU&amp;scroll=true"></script>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Напишите нам.</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ваше сообщение</label>
+                            <textarea class="form-control" name="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
