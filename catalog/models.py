@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db.models import Count
 
 NULLABLE = {"null": True, "blank": True}
 
@@ -40,3 +41,8 @@ def update_category_has_products(sender, instance, **kwargs):
     category = instance.category
     category.has_products = Products.objects.filter(category=category).exists()
     category.save()
+
+def get_top_categories():
+    top_categories = Category.objects.annotate(product_count=Count('products')).order_by('-product_count')[:3]
+    return top_categories
+    
