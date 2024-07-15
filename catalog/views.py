@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from catalog.models import Category, Products
+from catalog.models import get_top_categories as top
 
 
 def index(request):
@@ -7,7 +9,11 @@ def index(request):
         email = request.POST.get("email")
         message = request.POST.get("message")
         print(f'({name} : {email}) -> {message}')
-    return render(request, "index.html")
+    
+    context = {
+        "top": top(),
+    }
+    return render(request, "index.html", context)
 
 
 def catalog(request):
