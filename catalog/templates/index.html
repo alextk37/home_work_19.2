@@ -1,8 +1,7 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
   <div class="container">
-    <div class="col-md-12 text-center">
-      <h1>Каталог</h1>
-      </div>
+    {% include 'catalog/includes/hero.html' %}
+    {% include 'catalog/includes/custom_cards.html' %}
   </div>
 {% endblock %}
