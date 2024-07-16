@@ -1,17 +1,13 @@
 {% extends 'catalog/base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block content %}
   <div class="container">
      <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6">
-         {% if product.preview_img and product.preview_img.url %}
-        <img src="{{ product.preview_img.url }}" class="d-block mx-lg-auto img-fluid" alt="Изображение"
+        <img src="{{ product.preview_img | media }}" class="d-block mx-lg-auto img-fluid" alt="Изображение"
         width="700" height="500" loading="lazy">
-         {% else %}
-        <img src="{% static 'img/image_cap.jpg' %}" class="card-img-top" alt="Изображение">
-        {% endif %}
-
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ product.product_name }}</h1>
