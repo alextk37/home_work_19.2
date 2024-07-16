@@ -8,10 +8,11 @@ def index(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print(f'({name} : {email}) -> {message}')
+        
     
     context = {
         "top": top(),
+        "title": "Главная",
     }
     return render(request, "index.html", context)
 
@@ -21,9 +22,13 @@ def catalog(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print(f'({name} : {email}) -> {message}')
+        
+
+    context = {
+        "products": Products.objects.all(),
+        "title": "Каталог",}
     
-    return render(request, "catalog.html")
+    return render(request, "catalog.html", context)
 
 
 def contacts(request):
@@ -31,7 +36,7 @@ def contacts(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        print(f'({name} : {email}) -> {message}')
+        
 
     return render(request, "contacts.html")
 
