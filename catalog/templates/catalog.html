@@ -1,48 +1,13 @@
- <div class="container mt-5">
-        <div class="col-md-12 text-center">
-            <h1>Каталог</h1>
-          </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://i.postimg.cc/G2wYF439/painted-clay-jug.jpg" class="card-img-top"
-                        alt="Кувшин из глины">
-                    <div class="card-body">
-                        <h5 class="card-title">Кувшин из глины</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">1200 RUB</h6>
-                        <p class="card-text">Великолепное изделие ручной работы от наших мастеров.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://i.postimg.cc/C5KKk08z/painted-clay-cup.jpg" class="card-img-top"
-                        alt="Кружка из глины">
-                    <div class="card-body">
-                        <h5 class="card-title">Кружка из глины</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">740 RUB</h6>
-                        <p class="card-text">В этой кружке кофе становиться ещё вкуснее.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://i.postimg.cc/cHkWqnKL/painted-clay-teapot.jpg" class="card-img-top"
-                        alt="Заварочный чайник">
-                    <div class="card-body">
-                        <h5 class="card-title">Заварочный чайник</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">2800 RUB</h6>
-                        <p class="card-text">Крепкий и ароматный чай в красивом обрамлении.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+{% extends 'catalog/base.html' %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+    {% for product in products %}
+      <div class="col-md-3">
+        {% include 'catalog/includes/card.html' %}
+      </div>
+      {% endfor %}
     </div>
-   
+  </div>
+{% endblock %}
 
