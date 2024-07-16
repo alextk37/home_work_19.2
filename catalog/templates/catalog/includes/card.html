@@ -1,10 +1,7 @@
+{% load my_tags %}
 {% load static %}
 <div class="card mb-3">
-  {% if product.preview_img and product.preview_img.url %}
-    <img src="{{ product.preview_img.url }}" class="card-img-top" alt="Изображение">
-  {% else %}
-    <img src="{% static 'img/image_cap.jpg' %}" class="card-img-top" alt="Изображение">
-  {% endif %}
+  <img src="{{ product.preview_img | media }}" class="card-img-top" alt="Изображение">
   <div class="card-body">
     <h5 class="card-title">{{ product.product_name }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ product.price }} RUB</h6>
