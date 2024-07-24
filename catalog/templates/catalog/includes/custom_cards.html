@@ -1,24 +1,29 @@
- <div class="container px-4 py-5" id="custom-cards">
-    <h2 class="pb-2 border-bottom">Популярные категории</h2>
+{% load static %}
+{% load my_tags %}
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Популярные товары</h2>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-     {% for category in top %}
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h5 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">{{ category.name }}</h5>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="d-flex align-items-center me-3">
-               <small>{{ category.description }}</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <small>{{ category.product_count }} шт.</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-     {% endfor %}
+{% for product in top %}
+<div class="col">
+  <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-color: rgba(33, 37, 41, 0.78) !important;">
+    <div class="card-bg" style="background-image: url({{ product.preview_img | media }});"></div>
+    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+      <a href="{% url 'catalog:product_item' product.pk  %}" style="text-decoration: none;">
+      <h5 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">{{ product.product_name }}</h5>
+      </a>
+      <ul class="d-flex list-unstyled mt-auto justify-content-between">
+        <li class="d-flex align-items-center me-3">
+          <small class="sr-only">{{ product.price }} руб.</small>
+        </li>
+        <li class="d-flex align-items-center">
+          <small>{{ product.view_count }} 👁️</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>     
+{% endfor %}
       
     </div>
   </div>
