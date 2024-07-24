@@ -24,7 +24,7 @@ class Products(models.Model):
     )
     # manufactured_at = models.DateField(verbose_name='Дата производства', **NULLABLE)
     view_count = models.IntegerField(verbose_name="Количество просмотров", default=0)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, **NULLABLE)
 
     def __str__(self):
         return f"{self.product_name}"
