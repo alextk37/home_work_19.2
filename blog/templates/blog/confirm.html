@@ -1,0 +1,16 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-md-7 py-4">
+<h1>Удалить статью?</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Удалить">
+  <a href="{% url 'blog:blog' %}" class="btn btn-outline-secondary">Отмена</a>
+</form>
+    </div>
+</div>
+</div>
+{% endblock %}
