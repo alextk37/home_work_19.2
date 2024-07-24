@@ -18,7 +18,7 @@ class Article(models.Model):
         verbose_name="Дата изменения", auto_now=True, **NULLABLE
     )
     view_count = models.IntegerField(verbose_name="Количество просмотров", default=0)
-    slug = models.SlugField(max_length=255, unique=True, **NULLABLE)
+    slug = models.CharField(max_length=255, unique=True, **NULLABLE)
 
     class Meta:
         verbose_name = "статья"
