@@ -17,18 +17,23 @@
       </a>
       <ul class="d-flex list-unstyled mt-auto justify-content-between">
         <li class="d-flex align-items-center me-3">
-          <small class="sr-only">Опубликовано: {{ article.pub_date }}</small>
+          <small class="sr-only">Опубликовано: {{ article.created_at }}</small>
         </li>
         <li class="d-flex align-items-center">
           <small>{{ article.view_count }} 👁️</small>
         </li>
       </ul>
+   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <a href="{% url 'blog:article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Читать</a>
+    <a href="{% url 'blog:edit_article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Редактировать</a>
+    <a href="{% url 'blog:delete_article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Удалить</a>
+   </div>
     </div>
   </div>
 </div>     
-{% endfor %}
-      
-    </div>
+{% endfor %} 
   </div>
+</div>
+<a class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;" href="{% url 'blog:new_article' %}">Новая статья</a>
 
 {% endblock %}
