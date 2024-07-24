@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from catalog.models import Category, Products
+from catalog.models import Products
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -10,64 +12,45 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def catalog(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-
-    context = {
-        "products": Products.objects.all(),
-        "title": "Каталог",
-    }
-
-    return render(request, "catalog.html", context)
+class CatalogListView(ListView):
+    model = Products
+    template_name = "catalog.html"
+    context_object_name = "products"
 
 
-def contacts(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-    context = {
-        "title": "Контакты",
-    }
+class CatalogDetailView(DetailView):
+    model = Products
+    template_name = "product_item.html"
+    context_object_name = "product"
 
-    return render(request, "contacts.html", context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = self.object.product_name
+        return context
 
-
-def about_company(request):
-    return render(request, "about_company.html")
-
-
-def product_item(request, pk):
-    context = {
-        "product": Products.objects.get(pk=pk),
-        "title": Products.objects.get(pk=pk).product_name,
-    }
-    return render(request, "product_item.html", context)
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.view_count += 1
+        obj.save()
+        return obj
 
 
-def new_product(request):
-    context = {
-        "title": "Новый продукт",
-        "categories": Category.objects.all(),
-    }
-    if request.method == "POST":
-        product_name = request.POST.get("productName")
-        description = request.POST.get("productDescription")
-        preview_img = request.FILES.get("productImage")
-        category_id = request.POST.get("productCategory")
-        price = request.POST.get("productPrice")
+class CatalogCreateView(CreateView):
+    model = Products
+    template_name = "new_product.html"
+    fields = ["product_name", "description", "preview_img", "category", "price"]
+    success_url = reverse_lazy("catalog:catalog")
 
-        category = Category.objects.get(pk=category_id)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Новый продукт"
+        return context
 
-        new_product = Products(
-            product_name=product_name,
-            description=description,
-            preview_img=preview_img,
-            category=category,
-            price=price,
-        )
-        new_product.save()
-    return render(request, "new_product.html", context)
+
+class ContactsView(TemplateView):
+    template_name = "contacts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Контакты"
+        return context
