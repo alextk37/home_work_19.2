@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from catalog.models import Category, Products
-from catalog.models import get_top_categories as top
 
 
 def index(request):
     context = {
-        "top": top(),
+        "top": Products.objects.all().order_by("-view_count")[:3],
         "title": "Главная",
     }
     return render(request, "index.html", context)
