@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "catalog"
+    # my apps section
+    "catalog",
+    "blog",
 ]
 
 MIDDLEWARE = [
@@ -81,7 +83,7 @@ DATABASES = {
         "USER": "postgres",
         "PORT": 5438,
         "PASSWORD": "198647gaM",
-        "HOST": "127.0.0.1"
+        "HOST": "127.0.0.1",
     }
 }
 
@@ -128,5 +130,5 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_URL = "/media/" 
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
