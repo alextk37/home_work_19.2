@@ -1,34 +1,10 @@
-{% extends 'catalog/base.html' %}
-{% load static %}
+{% extends "catalog/base.html" %}
 {% block content %}
-  <div class="container">
+<div class="container col-xxl-8 px-4 py-5">
 <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-  <div class="mb-3">
-    <label for="productName" class="form-label">Имя продукта</label>
-    <input type="text" class="form-control" id="productName" name="productName">
-  </div>
-  <div class="mb-3">
-    <label for="productDescription" class="form-label">Описание</label>
-    <textarea class="form-control" id="productDescription" name="productDescription"></textarea>
-  </div>
-  <div class="mb-3">
-    <label for="productImage" class="form-label">Изображение</label>
-    <input type="file" class="form-control" id="productImage" name="productImage">
-  </div>
-  <div class="mb-3">
-    <label for="productCategory" class="form-label">Выбор категории</label>
-    <select class="form-control" id="productCategory" name="productCategory">
-        {% for category in categories %}
-      <option value={{ category.pk }}>{{ category.category_name }}</option>
-        {% endfor %}
-    </select>
-  </div>
-  <div class="mb-3">
-    <label for="productPrice" class="form-label">Цена</label>
-    <input type="number" class="form-control" id="productPrice" name="productPrice">
-  </div>
-  <button type="submit" class="btn btn-primary">Сохранить</button>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Сохранить</button>
 </form>
-  </div>
+</div>
 {% endblock %}
