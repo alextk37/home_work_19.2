@@ -47,25 +47,3 @@ class Category(models.Model):
         verbose_name = "категория"
         verbose_name_plural = "категории"
         ordering = ("category_name",)
-
-
-@receiver(post_save, sender=Products)
-def update_category_has_products(sender, instance, **kwargs):
-    category = instance.category
-    category.has_products = Products.objects.filter(category=category).exists()
-    category.save()
-
-
-def get_top_categories():
-    top_categories = Category.objects.annotate(
-        product_count=Count("products")
-    ).order_by("-product_count")[:3]
-    context = []
-    for category in top_categories:
-        category_info = {
-            "name": category.category_name,
-            "description": category.description,
-            "product_count": category.product_count,
-        }
-        context.append(category_info)
-    return context
