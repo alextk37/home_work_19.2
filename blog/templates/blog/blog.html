@@ -1,6 +1,34 @@
 {% extends 'catalog/base.html' %}
-<div class="container">
+{% load my_tags %}
 {% block content %}
+<div class="container px-4 py-5" id="custom-cards">
+<h2 class="pb-2 border-bottom">Мой блог</h2>
+
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+{% for article in object_list %}
+<div class="col">
+  <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-color: rgba(33, 37, 41, 0.78) !important;">
+    <div class="card-bg" style="background-image: url({{ article.preview_img | media }});"></div>
+    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+           <a href="{% url 'blog:article' article.pk  %}" style="text-decoration: none; color: white;">
+          <h5 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">{{ article.title }}</h5>
+          <p class="pt-5 mt-2 mb-3 display-6 lh-1" style="font-size: smaller; color: rgba(255, 255, 255, 0.5)">{{ article.description | truncatechars:100 }}</p>
+
+      </a>
+      <ul class="d-flex list-unstyled mt-auto justify-content-between">
+        <li class="d-flex align-items-center me-3">
+          <small class="sr-only">Опубликовано: {{ article.pub_date }}</small>
+        </li>
+        <li class="d-flex align-items-center">
+          <small>{{ article.view_count }} 👁️</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>     
+{% endfor %}
+      
+    </div>
+  </div>
 
 {% endblock %}
-</div>
