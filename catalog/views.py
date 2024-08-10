@@ -39,12 +39,14 @@ class CatalogCreateView(CreateView):
     model = Products
     template_name = "new_product.html"
     fields = ["product_name", "description", "preview_img", "category", "price"]
-    success_url = reverse_lazy("catalog:catalog")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Новый продукт"
         return context
+
+    def get_success_url(self):
+        return reverse_lazy("catalog:catalog")
 
 
 class ContactsView(TemplateView):
