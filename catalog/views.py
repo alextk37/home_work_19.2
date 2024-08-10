@@ -1,7 +1,14 @@
 from django.shortcuts import render
 from catalog.models import Products
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    TemplateView,
+    UpdateView,
+)
 from django.urls import reverse_lazy
+from catalog.forms import CatalogCreateForm
 
 
 def index(request):
@@ -35,18 +42,27 @@ class CatalogDetailView(DetailView):
         return obj
 
 
-class CatalogCreateView(CreateView):
+class FormProductMixin:
     model = Products
     template_name = "new_product.html"
-    fields = ["product_name", "description", "preview_img", "category", "price"]
+    form_class = CatalogCreateForm
 
+    def get_success_url(self):
+        return reverse_lazy("catalog:catalog")
+
+
+class CatalogCreateView(FormProductMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Новый продукт"
         return context
 
-    def get_success_url(self):
-        return reverse_lazy("catalog:catalog")
+
+class CatalogUpdateView(FormProductMixin, UpdateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Редактирование продукта"
+        return context
 
 
 class ContactsView(TemplateView):
