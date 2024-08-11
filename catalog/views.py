@@ -42,8 +42,7 @@ class CatalogDetailView(DetailView):
         return obj
 
 
-class FormProductMixin:
-    model = Products
+class CatalogFormMixin:
     template_name = "new_product.html"
     form_class = CatalogCreateForm
 
@@ -51,14 +50,18 @@ class FormProductMixin:
         return reverse_lazy("catalog:catalog")
 
 
-class CatalogCreateView(FormProductMixin, CreateView):
+class CatalogCreateView(CatalogFormMixin, CreateView):
+    model = Products
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Новый продукт"
         return context
 
 
-class CatalogUpdateView(FormProductMixin, UpdateView):
+class CatalogUpdateView(CatalogFormMixin, UpdateView):
+    model = Products
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Редактирование продукта"
