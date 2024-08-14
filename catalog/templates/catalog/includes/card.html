@@ -1,13 +1,17 @@
 {% load my_tags %}
 {% load static %}
 <div class="card mb-3">
+  <div class="card-title, text-center">
+     <h5 class="card-title">{{ product.product_name }}</h5>
+     <small class="text-muted">Версия продукта - {{ product.current_version }}</small>
+
+    </div>
   <img src="{{ product.preview_img | media }}" class="card-img-top" alt="Изображение">
   <div class="card-body">
-    <h5 class="card-title">{{ product.product_name }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ product.price }} RUB</h6>
+         <h6 class="card-subtitle mb-2 text-muted">{{ product.price }} RUB</h6>
         <p class="card-text">{{ product.description | truncatechars:30 }}</p>
           <a href="{% url 'catalog:product_item' product.pk  %}" class="btn btn-primary">Подробнее</a>
           <a href="{% url 'catalog:update_product' product.pk  %}" class="btn btn-success">Изменить</a>
-  </div>
+            </div>
 </div>
 
