@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalog.models import Products
+from catalog.models import Products, Version
 from django.views.generic import (
     ListView,
     DetailView,
@@ -8,7 +8,8 @@ from django.views.generic import (
     UpdateView,
 )
 from django.urls import reverse_lazy
-from catalog.forms import CatalogCreateForm
+from catalog.forms import CatalogCreateForm, VersionForm, CatalogUpdateForm
+from django.forms import inlineformset_factory
 
 
 def index(request):
@@ -23,6 +24,27 @@ class CatalogListView(ListView):
     model = Products
     template_name = "catalog.html"
     context_object_name = "products"
+
+    def get_queryset(self):
+        # Получаем все продукты, у которых есть активные версии
+        return Products.objects.prefetch_related("versions").all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Получаем активные версии для всех продуктов
+        active_versions = Version.objects.filter(is_active=True)
+
+        # Создаем словарь для хранения активных версий по продуктам
+        version_dict = {}
+        for version in active_versions:
+            version_dict[version.product.id] = version.version
+
+        # Добавляем номер версии в контекст для каждого продукта
+        for product in context["products"]:
+            product.current_version = version_dict.get(product.id)
+
+        context["title"] = "Каталог"
+        return context
 
 
 class CatalogDetailView(DetailView):
@@ -44,7 +66,6 @@ class CatalogDetailView(DetailView):
 
 class CatalogFormMixin:
     template_name = "new_product.html"
-    form_class = CatalogCreateForm
 
     def get_success_url(self):
         return reverse_lazy("catalog:catalog")
@@ -52,20 +73,69 @@ class CatalogFormMixin:
 
 class CatalogCreateView(CatalogFormMixin, CreateView):
     model = Products
+    form_class = CatalogCreateForm
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Новый продукт"
-        return context
+        context_data = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(
+            Products, Version, form=VersionForm, extra=1
+        )
+        if self.request.method == "POST":
+            context_data["formset"] = ProductFormset(
+                self.request.POST, instance=self.object
+            )
+        else:
+            context_data["formset"] = ProductFormset(instance=self.object)
+
+        context_data["title"] = "Новый продукт"
+        return context_data
+
+    def form_valid(self, form):
+        context_data = self.get_context_data()
+        formset = context_data["formset"]
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+        else:
+            return self.render_to_response(
+                self.get_context_data(form=form, formset=formset)
+            )
 
 
 class CatalogUpdateView(CatalogFormMixin, UpdateView):
     model = Products
+    form_class = CatalogUpdateForm
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Редактирование продукта"
-        return context
+        context_data = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(
+            Products, Version, form=VersionForm, extra=0
+        )
+        if self.request.method == "POST":
+            context_data["formset"] = ProductFormset(
+                self.request.POST, instance=self.object
+            )
+        else:
+            context_data["formset"] = ProductFormset(instance=self.object)
+
+        context_data["title"] = "Изменение продукта"
+        return context_data
+
+    def form_valid(self, form):
+        context_data = self.get_context_data()
+        formset = context_data["formset"]
+        self.object = form.save()
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+        else:
+            return self.render_to_response(
+                self.get_context_data(form=form, formset=formset)
+            )
 
 
 class ContactsView(TemplateView):
