@@ -56,7 +56,7 @@ class Category(models.Model):
 class Version(models.Model):
     product = models.ForeignKey(
         Products,
-        on_delete=models.DO_NOTHING,
+        on_delete=models.CASCADE,
         verbose_name="продукт",
         **NULLABLE,
         related_name="versions",
