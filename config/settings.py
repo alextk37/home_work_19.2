@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # my apps section
     "catalog",
     "blog",
+    "users",
 ]
 
 MIDDLEWARE = [
