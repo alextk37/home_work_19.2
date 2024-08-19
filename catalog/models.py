@@ -22,6 +22,13 @@ class Products(models.Model):
     # manufactured_at = models.DateField(verbose_name='Дата производства', **NULLABLE)
     view_count = models.IntegerField(verbose_name="Количество просмотров", default=0)
     slug = models.SlugField(max_length=255, unique=True, **NULLABLE)
+    user = models.ForeignKey(
+        "users.User",
+        on_delete=models.DO_NOTHING,
+        verbose_name="пользователь",
+        **NULLABLE,
+        related_name="products",
+    )
 
     def __str__(self):
         return f"{self.product_name}"
