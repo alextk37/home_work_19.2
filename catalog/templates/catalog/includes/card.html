@@ -4,7 +4,7 @@
   <div class="card-title, text-center">
      <h5 class="card-title">{{ product.product_name }}</h5>
      <small class="text-muted">Версия продукта - {{ product.current_version }}</small>
-
+     <small class="text-muted">Продавец - {{ product.user.first_name | no_name }}</small>
     </div>
   <img src="{{ product.preview_img | media }}" class="card-img-top" alt="Изображение">
   <div class="card-body">
