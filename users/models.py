@@ -31,9 +31,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     avatar = models.ImageField(upload_to="users/", verbose_name="аватар", **NULLABLE)
     country = models.CharField(max_length=100, verbose_name="страна", **NULLABLE)
 
+    first_name = models.CharField(max_length=100, verbose_name="имя", **NULLABLE)
+    last_name = models.CharField(max_length=100, verbose_name="фамилия", **NULLABLE)
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    token = models.CharField(max_length=100, verbose_name="токен", **NULLABLE)
     objects = UserManager()
 
     USERNAME_FIELD = "email"
