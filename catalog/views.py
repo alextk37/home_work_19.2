@@ -10,6 +10,7 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from catalog.forms import CatalogCreateForm, VersionForm, CatalogUpdateForm
 from django.forms import inlineformset_factory
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
@@ -71,7 +72,7 @@ class CatalogFormMixin:
         return reverse_lazy("catalog:catalog")
 
 
-class CatalogCreateView(CatalogFormMixin, CreateView):
+class CatalogCreateView(CatalogFormMixin, CreateView, LoginRequiredMixin):
     model = Products
     form_class = CatalogCreateForm
 
@@ -91,6 +92,11 @@ class CatalogCreateView(CatalogFormMixin, CreateView):
         return context_data
 
     def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.user = user
+        product.save()
+
         context_data = self.get_context_data()
         formset = context_data["formset"]
         if form.is_valid() and formset.is_valid():
