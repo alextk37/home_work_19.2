@@ -1,0 +1,12 @@
+{% extends "catalog/base.html" %}
+<div class="col-md-6">
+{% block content %}
+<form class="row basic-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-md-3">
+        {{ form.as_p }}
+        <button class="btn btn-success">Сохранить изменения</button>
+    </div>
+</form>
+</div>
+{% endblock %}
