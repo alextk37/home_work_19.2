@@ -1,0 +1,12 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+<form class="row" method="post">
+    {% csrf_token %}
+    <div class="col-md-3">
+        {{ form.as_p }}
+        <button class="btn btn-success">войти</button>
+        <a class="btn btn-danger" href="{% url 'users:password_reset' %}">Воcстановить пароль</a>
+    </div>
+</form>
+{% endblock %}
