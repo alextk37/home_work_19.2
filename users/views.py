@@ -1,5 +1,5 @@
 from django.views.generic import CreateView, UpdateView
-from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.auth.views import LoginView
 from users.forms import (
     UserRegisterForm,
     UserProfileForm,
@@ -12,7 +12,6 @@ from django.core.mail import send_mail
 from config.settings import EMAIL_HOST_USER
 import secrets
 from django.shortcuts import get_object_or_404, redirect
-import random
 
 
 class RegisterView(CreateView):
