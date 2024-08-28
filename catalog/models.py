@@ -29,6 +29,7 @@ class Products(models.Model):
         **NULLABLE,
         related_name="products",
     )
+    is_published = models.BooleanField(verbose_name="Опубликовано", default=False)
 
     def __str__(self):
         return f"{self.product_name}"
