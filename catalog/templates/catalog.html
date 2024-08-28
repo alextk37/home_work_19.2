@@ -3,12 +3,14 @@
   <div class="container mt-5">
     <div class="row">
     {% for product in products %}
-    {% if product.current_version %}
-      <div class="col-md-3">
-        {% include 'catalog/includes/card.html' %}
-      </div>
-    {% endif %}
-      {% endfor %}
+      {% if product.is_published %}
+        {% if product.current_version %}
+           <div class="col-md-3">
+            {% include 'catalog/includes/card.html' %}
+           </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
     </div>
   </div>
 {% endblock %}
