@@ -24,6 +24,18 @@ class Article(models.Model):
         verbose_name = "статья"
         verbose_name_plural = "статьи"
         ordering = ("title",)
+        permissions = [
+            (
+                "can_change_article_is_published",
+                "Может редактировать статус публикации",
+            ),
+            ("can_change_article_description", "Может редактировать описание"),
+            ("can_change_article_content", "Может редактировать контент"),
+            ("can_change_article_preview_img", "Может редактировать изображение"),
+            ("can_change_article_slug", "Может редактировать slug"),
+            ("can_delete_article_article", "Может удалять статью"),
+            ("can_create_article_article", "Может создавать статью"),
+        ]
 
     def __str__(self):
         return self.title
