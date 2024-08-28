@@ -19,7 +19,9 @@
                 </li>
                 <li class="nav-item active">
                   {% if user.is_authenticated %}
+                  {% if perms.catalog.add_product %}
                     <a class="nav-link btn btn-primary btn-lg px-4 me-md-2" href="{% url 'catalog:new_product' %}">Новый продукт</a>
+                  {% endif %}
                   {% endif %}
                 </li>
             </ul>
