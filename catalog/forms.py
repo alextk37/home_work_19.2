@@ -36,7 +36,14 @@ class FormMixin:
 class CatalogCreateForm(FormMixin, forms.ModelForm):
     class Meta:
         model = Products
-        fields = ("product_name", "description", "preview_img", "category", "price")
+        fields = (
+            "product_name",
+            "description",
+            "preview_img",
+            "category",
+            "price",
+            "is_published",
+        )
 
 
 class CatalogUpdateForm(FormMixin, forms.ModelForm):
