@@ -8,7 +8,12 @@ from django.views.generic import (
     UpdateView,
 )
 from django.urls import reverse_lazy
-from catalog.forms import CatalogCreateForm, VersionForm, CatalogUpdateForm
+from catalog.forms import (
+    CatalogCreateForm,
+    VersionForm,
+    CatalogUpdateForm,
+    ModeratorUpdateForm,
+)
 from django.forms import inlineformset_factory
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -112,7 +117,12 @@ class CatalogCreateView(CatalogFormMixin, CreateView, LoginRequiredMixin):
 
 class CatalogUpdateView(CatalogFormMixin, UpdateView):
     model = Products
-    form_class = CatalogUpdateForm
+
+    def get_form_class(self):
+        if self.request.user.groups.filter(name="Moderator").exists():
+            return ModeratorUpdateForm
+        else:
+            return CatalogUpdateForm
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
