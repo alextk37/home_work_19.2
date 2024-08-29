@@ -3,7 +3,9 @@
 {% block content %}
 <div class="container px-4 py-5" id="custom-cards">
 <h2 class="pb-2 border-bottom">Мой блог</h2>
-
+{% if user.is_authenticated %}
+<a class="btn btn-primary" href="{% url 'blog:new_article' %}">Новая статья</a>
+{% endif %}
 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 {% for article in object_list %}
 <div class="col">
@@ -25,9 +27,12 @@
       </ul>
    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
     <a href="{% url 'blog:article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Читать</a>
-    {% if perms.blog.change_article %}
+    {% if user|is_in_group:"ContentManager" %}
     <a href="{% url 'blog:edit_article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Редактировать</a>
     <a href="{% url 'blog:delete_article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Удалить</a>
+    {% endif %}
+    {% if user|is_in_group:"Moderator" %}
+    <a href="{% url 'blog:edit_article' article.pk  %}" class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;">Снять с публикации</a>
     {% endif %}
    </div>
     </div>
@@ -36,6 +41,6 @@
 {% endfor %} 
   </div>
 </div>
-<a class="btn btn-outline-light" style="background-color: rgba(33, 37, 41, 0.78) !important;" href="{% url 'blog:new_article' %}">Новая статья</a>
+
 
 {% endblock %}
