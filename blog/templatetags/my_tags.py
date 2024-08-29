@@ -29,3 +29,8 @@ def no_avatar(data):
     if data:
         return f"/media/{data}"
     return "/static/img/no_avatar.jpg"
+
+
+@register.filter
+def is_in_group(user, group):
+    return user.groups.filter(name=group).exists()
