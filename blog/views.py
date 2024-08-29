@@ -8,6 +8,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from blog.forms import ContentManagerForm, ModeratorForm
 
 
 class BlogListView(ListView):
@@ -56,7 +57,12 @@ class BlogCreateView(CreateView):
 class BlogUpdateView(UpdateView):
     model = Article
     template_name = "blog/edit_article.html"
-    fields = ["title", "description", "content", "preview_img"]
+
+    def get_form_class(self):
+        if self.request.user.groups.filter(name="ContentManager").exists():
+            return ContentManagerForm
+        else:
+            return ModeratorForm
 
     def get_success_url(self):
         return reverse_lazy("blog:article", args=[self.object.pk])
