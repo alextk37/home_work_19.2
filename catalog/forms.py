@@ -52,6 +52,16 @@ class CatalogUpdateForm(FormMixin, forms.ModelForm):
         fields = ("product_name", "description", "preview_img", "category", "price")
 
 
+class ModeratorUpdateForm(FormMixin, forms.ModelForm):
+    class Meta:
+        model = Products
+        fields = (
+            "is_published",
+            "description",
+            "category",
+        )
+
+
 class VersionForm(FormMixin, forms.ModelForm):
     class Meta:
         model = Version
