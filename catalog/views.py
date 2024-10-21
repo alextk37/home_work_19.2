@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalog.models import Products, Version
+from catalog.models import Category, Products, Version
 from django.views.generic import (
     ListView,
     DetailView,
@@ -16,6 +16,7 @@ from catalog.forms import (
 )
 from django.forms import inlineformset_factory
 from django.contrib.auth.mixins import LoginRequiredMixin
+from config.cached import get_cached
 
 
 def index(request):
@@ -161,3 +162,9 @@ class ContactsView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Контакты"
         return context
+
+
+def category_list_view(request):
+    categories = get_cached(Category, 600)
+
+    return render(request, "categories.html", {"categories": categories})
